@@ -3,6 +3,11 @@ import Axios from "axios";
 import styled from "styled-components";
 import MovieComponent from "./components/MovieComponents";
 import MovieInfoComponent from "./components/MovieInfoComponents";
+import MovieImage from "./components/MovieImage";
+import MovieIcon from "./images/movie-icon.svg";
+import SearchIcon from "./images/search-icon.svg";
+import SearchImage from "./components/SearchImage";
+import PlaceHolderImage from "./components/PlaceHolderImage";
 
 export const API_KEY = "a59869cc";
 
@@ -36,15 +41,7 @@ const SearchBox = styled.div`
   width: 50%;
   background-color: white;
 `;
-const SearchIcon = styled.img`
-  width: 32px;
-  height: 32px;
-`;
-const MovieImage = styled.img`
-  width: 48px;
-  height: 48px;
-  margin: 15px;
-`;
+
 const SearchInput = styled.input`
   color: black;
   font-size: 16px;
@@ -61,13 +58,6 @@ const MovieListContainer = styled.div`
   gap: 25px;
   justify-content: space-evenly; ;
 `;
-const Placeholder = styled.img`
-  width: 120px;
-  height: 120px;
-  margin: 150px;
-  opacity: 50%;
-`;
-
 function App() {
   const [searchQuery, updateSearchQuery] = useState("");
 
@@ -95,11 +85,11 @@ function App() {
     <Container>
       <Header>
         <AppName>
-          <MovieImage src="/movie-icon.svg" />
+          <MovieImage img={MovieIcon} />
           React Movie App
         </AppName>
         <SearchBox>
-          <SearchIcon src="/search-icon.svg" />
+          <SearchImage img={SearchIcon} />
           <SearchInput
             placeholder="Search Movie"
             value={searchQuery}
@@ -123,7 +113,7 @@ function App() {
             />
           ))
         ) : (
-          <Placeholder src="/react-movie-app/movie-icon.svg" />
+          <PlaceHolderImage img={MovieIcon} />
         )}
       </MovieListContainer>
     </Container>
